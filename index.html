@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sanjivi Kumar | Data Analyst Portfolio</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Fonts & small custom styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f7f9fb; --surface:#ffffff; --text:#1f2937; --muted:#6b7280; --border:#e6eef6; --accent:#6d597a;
+    }
+    html,body{font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto; background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased;}
+    .container{max-width:1100px;margin:0 auto;padding:0 1rem;}
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:10px;box-shadow:0 6px 18px rgba(16,24,40,0.04);}
+    .accent{color:var(--accent);}
+    .btn{background:var(--accent);color:#fff;padding:.6rem 1rem;border-radius:8px;display:inline-flex;gap:.5rem;align-items:center;}
+    .chip{background:#f3e8ff;color:var(--accent);padding:.25rem .6rem;border-radius:999px;font-size:.8rem;}
+    .section-title{font-family:"Playfair Display",serif;color:var(--text);}
+    @media (min-width:768px){ .grid-2{display:grid;grid-template-columns:1fr 360px;gap:2rem;} }
+
+    .gradient-outline {
+      padding: 1px;
+      border-radius: 12px;
+      background: linear-gradient(90deg, #000000 0%, #4c1d95 50%, #8b5cf6 100%);
+      background-attachment: fixed;
+      background-size: 200% 100%;
+    }
+    .gradient-outline .card {
+      background: var(--surface);
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 6px 18px rgba(16,24,40,0.04);
+    }
+    .icon-acc { color:var(--accent); margin-right:.5rem; display:inline-block; animation:float 3s ease-in-out infinite; }
+    @keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-6px);} }
+    .icon-acc:hover{ transform: scale(1.08); }
+    .section-title { display:flex; align-items:center; gap:.5rem; }
+    .card { transition: transform .28s ease, box-shadow .28s ease; }
+    .card:hover { transform: translateY(-6px); box-shadow:0 18px 40px rgba(15,23,42,0.08); }
+    @media (max-width:768px){
+      .container{padding:0 .75rem;}
+      .card{padding:1rem;}
+      .w-56{width:140px;height:140px;}
+      .grid-2{grid-template-columns:1fr;}
+    }
+    .job-roles li {
+      padding: 0.75rem;
+      border-radius: 6px;
+      transition: transform .2s ease, box-shadow .2s ease;
+      border-left-width: 4px;
+      border-left-color: transparent;
+    }
+    .job-roles li:hover {
+      transform: translateX(4px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .job-roles li strong {
+      font-weight: 600;
+    }
+    .job-roles li:nth-child(1) { background-color: #f0f9ff; border-left-color: #38bdf8; }
+    .job-roles li:nth-child(2) { background-color: #fef2f2; border-left-color: #f87171; }
+    .job-roles li:nth-child(3) { background-color: #f7fee7; border-left-color: #a3e635; }
+    .job-roles li:nth-child(4) { background-color: #fffbeb; border-left-color: #facc15; }
+    .job-roles li:nth-child(5) { background-color: #faf5ff; border-left-color: #c084fc; }
+  </style>
+
+  <!-- AOS for scroll animations -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="sticky top-4 z-40">
+    <div class="container flex items-center justify-between py-4">
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-md bg-gradient-to-r from-purple-600 to-violet-600 flex items-center justify-center text-white font-bold">SK</div>
+        <div>
+          <div class="font-semibold">Sanjivi Kumar</div>
+          <div class="text-xs text-muted text-gray-500">Data Analyst | Junior Data Scientist | BI Developer</div>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-6 text-sm text-gray-700">
+        <a href="#about" class="hover:underline">About</a>
+        <a href="#skills" class="hover:underline">Skills</a>
+        <a href="#projects" class="hover:underline">Projects</a>
+        <a href="#experience" class="hover:underline">Experience</a>
+        <a href="#contact" class="hover:underline">Contact</a>
+        <a href="#" class="ml-2 text-gray-600 hover:text-gray-800"><i class="fab fa-github"></i></a>
+        <a href="#" class="text-gray-600 hover:text-gray-800"><i class="fab fa-linkedin"></i></a>
+      </nav>
+
+      <button id="mobileOpen" class="md:hidden p-2 text-gray-700"><i class="fas fa-bars"></i></button>
+    </div>
+
+    <!-- mobile menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white shadow-lg mx-4 rounded-lg p-4">
+      <div class="flex flex-col gap-3 text-sm">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="mt-8">
+    <div class="gradient-outline" data-aos="fade-up">
+      <div class="card p-8 grid gap-6 md:grid-cols-2 items-center">
+        <div>
+          <h1 class="text-3xl md:text-4xl font-bold section-title"><i class="fas fa-user-astronaut icon-acc" aria-hidden="true"></i>Sanjivi Kumar</h1>
+          <p class="mt-2 text-lg text-gray-700">Data Analyst | Junior Data Scientist | BI Developer — Analytical and results-driven professional with strong foundation in SQL, Excel, Power BI, Tableau, and Python. Skilled in statistical analysis and delivering actionable insights.</p>
+
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="#contact" class="btn">Contact Me</a>
+            <a href="#projects" class="btn" style="background:#eef6ff;color:var(--accent);border:1px solid rgba(11,99,214,0.12)">View Projects</a>
+          </div>
+
+          <div class="mt-6 flex flex-wrap gap-2 items-center text-sm">
+            <span class="chip">SQL</span>
+            <span class="chip">Excel</span>
+            <span class="chip">Power BI</span>
+            <span class="chip">Tableau</span>
+            <span class="chip">Python</span>
+          </div>
+        </div>
+
+        <div class="flex justify-center">
+          <div class="w-56 h-56 card rounded-full overflow-hidden flex items-center justify-center">
+            <img src="Sanjiviportfolio.jpg" alt="Sanjivi Kumar" class="object-cover w-full h-full">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT + SUMMARY -->
+  <section id="about" class="mt-8">
+    <div class="gradient-outline" data-aos="fade-up">
+      <div class="card p-6 grid-2 items-start gap-6">
+        <div class="card p-6">
+          <h2 class="text-2xl font-semibold section-title"><i class="fas fa-info-circle icon-acc" aria-hidden="true"></i>About</h2>
+          <p class="mt-3 text-gray-700">I'm an analytical and results-driven Data Analyst with a strong foundation in SQL, Excel, Power BI, Tableau, and Python. Skilled in statistical analysis, delivering insights, creating dashboards, and collaborating with stakeholders to drive data-informed decisions.</p>
+          <ul class="mt-4 space-y-2 text-gray-600">
+            <li><strong>Location:</strong> Theni, Tamil Nadu</li>
+            <li><strong>Experience:</strong> 1+ years</li>
+            <li><strong>Education:</strong> B.Tech in AI & Data Science</li>
+            <li><strong>Languages:</strong> Tamil, English</li>
+          </ul>
+        </div>
+        <aside class="card p-6">
+          <h3 class="font-semibold text-gray-800 section-title"><i class="fas fa-address-card icon-acc"></i>Contact</h3>
+          <div class="mt-3 text-sm text-gray-700 space-y-2">
+            <div><strong>Email:</strong> <a href="mailto:sanjivid.007@gmail.com" class="text-blue-600">sanjivid.007@gmail.com</a></div>
+            <div><strong>Phone:</strong> <a href="tel:+919042136617" class="text-gray-700">+91 90421 36617</a></div>
+            <div><strong>LinkedIn:</strong> <a href="#" target="_blank" class="text-blue-600">linkedin.com/in/sanjivikumar</a></div>
+            <div><strong>GitHub:</strong> <a href="#" target="_blank" class="text-blue-600">github.com/sanjivikumar</a></div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="mt-8">
+    <div class="gradient-outline" data-aos="fade-up">
+      <div class="card p-6">
+        <h2 class="section-title text-2xl mb-4"><i class="fas fa-tools icon-acc" aria-hidden="true"></i>Technical Skills</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="card p-4">
+            <h4 class="font-semibold">Data Analysis & Visualization</h4>
+            <ul class="mt-3 text-gray-700 space-y-2">
+              <li>SQL <span class="chip">90%</span></li>
+              <li>Power BI <span class="chip">85%</span></li>
+              <li>Tableau <span class="chip">80%</span></li>
+              <li>Excel <span class="chip">85%</span></li>
+            </ul>
+          </div>
+          <div class="card p-4">
+            <h4 class="font-semibold">Programming & Machine Learning</h4>
+            <ul class="mt-3 text-gray-700 space-y-2">
+              <li>Python <span class="chip">85%</span></li>
+              <li>Pandas/NumPy <span class="chip">80%</span></li>
+              <li>Scikit-learn <span class="chip">75%</span></li>
+              <li>R <span class="chip">70%</span></li>
+            </ul>
+          </div>
+          <div class="card p-4">
+            <h4 class="font-semibold">Other Skills</h4>
+            <ul class="mt-3 text-gray-700 space-y-2">
+              <li>Data Cleaning, Statistical Analysis, ETL Processes, Data Modeling</li>
+              <li>DAX, Feature Engineering, Hyperparameter Tuning, Data Storytelling</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="mt-8">
+    <div class="gradient-outline" data-aos="fade-up">
+      <div class="card p-6">
+        <h2 class="section-title text-2xl mb-4"><i class="fas fa-folder-open icon-acc" aria-hidden="true"></i>Featured Projects</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <article class="card p-4" data-aos="zoom-in" data-aos-delay="60">
+            <h4 class="font-semibold"><i class="fas fa-microchip text-indigo-600 mr-2"></i>Semiconductor Yield Prediction</h4>
+            <p class="mt-2 text-gray-600 text-sm">Classification models with feature engineering and PCA to predict semiconductor manufacturing yield.</p>
+            <div class="mt-3 flex gap-2">
+              <span class="chip">Python</span>
+              <span class="chip">Scikit-learn</span>
+              <span class="chip">PCA</span>
+              <span class="chip">GridSearchCV</span>
+            </div>
+            <div class="mt-2 text-sm text-secondary">Improved accuracy by 20%</div>
+          </article>
+          <article class="card p-4" data-aos="zoom-in" data-aos-delay="120">
+            <h4 class="font-semibold"><i class="fas fa-chart-line text-indigo-600 mr-2"></i>Business Sales Dashboard</h4>
+            <p class="mt-2 text-gray-600 text-sm">E-Commerce data analysis and visualization dashboard with interactive features and automated reporting.</p>
+            <div class="mt-3 flex gap-2">
+              <span class="chip">Power BI</span>
+              <span class="chip">DAX</span>
+              <span class="chip">SQL</span>
+              <span class="chip">Data Modeling</span>
+            </div>
+            <div class="mt-2 text-sm text-secondary">Reduced analysis time by 30%</div>
+          </article>
+        </div>
+        <div class="mt-6 text-center">
+          <a href="#projects" class="btn">View All Projects</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="mt-8">
+    <div class="gradient-outline" data-aos="fade-up">
+      <div class="card p-6">
+        <h2 class="section-title text-2xl mb-4"><i class="fas fa-briefcase icon-acc" aria-hidden="true"></i>Professional Experience</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="card p-4">
+            <h4 class="font-semibold">Data Science Intern</h4>
+            <div class="text-sm text-gray-600">Corizo Edutech — Feb 2025 – Mar 2025</div>
+            <ul class="mt-3 text-gray-700 space-y-2">
+              <li>Executed comprehensive EDA and data preprocessing for machine learning models, improving data quality by 25%</li>
+              <li>Boosted ML model accuracy by 20% through hyperparameter tuning and feature selection techniques</li>
+              <li>Designed and implemented Power BI dashboards that reduced analysis time by 30% for business teams</li>
+              <li>Collaborated with cross-functional teams to translate business requirements into analytical solutions</li>
+            </ul>
+            <div class="mt-2 text-sm">
+              <strong>Technologies Used:</strong>
+              <span class="chip">Python</span>
+              <span class="chip">Pandas</span>
+              <span class="chip">Scikit-learn</span>
+              <span class="chip">Power BI</span>
+              <span class="chip">SQL</span>
+            </div>
+          </div>
+          <div class="card p-4">
+            <h4 class="font-semibold">Education</h4>
+            <div class="mt-2 text-gray-700">
+              <div class="font-medium">B.Tech in AI & Data Science</div>
+              <div class="text-sm text-gray-600">Bharath Niketan Engineering College — 2022–2026 (ongoing)</div>
+              <div class="mt-2 font-medium">Academic Projects:</div>
+              <ul class="list-disc ml-5 text-gray-600 text-sm">
+                <li>Semiconductor Yield Prediction: Developed classification models with feature engineering and PCA to predict manufacturing yield.</li>
+                <li>Customer Segmentation Analysis: Used clustering techniques to identify distinct customer segments for targeted marketing.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="mt-6">
+          <h3 class="font-semibold text-lg mb-2">Certifications & Training</h3>
+          <ul class="list-disc ml-5 text-gray-600 text-sm">
+            <li>Data Science with Python – Corizo Edutech | 2025</li>
+            <li>Business Intelligence with Power BI – Online Course | 2024</li>
+            <li>SQL for Data Analysis – Online Course | 2023</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="mt-8 mb-12">
+    <div class="gradient-outline" data-aos="fade-up">
+      <div class="card p-6">
+        <div class="flex flex-col md:flex-row gap-6">
+          <div class="flex-1">
+            <h3 class="font-semibold section-title"><i class="fas fa-handshake icon-acc" aria-hidden="true"></i>Let's Work Together</h3>
+            <p class="mt-2 text-gray-700">I'm currently looking for new opportunities in data analysis and business intelligence. Whether you have a question or just want to connect, feel free to reach out.</p>
+            <div class="mt-4 text-sm">
+              <div><strong>Email:</strong> <a href="mailto:sanjivid.007@gmail.com" class="text-blue-600">sanjivid.007@gmail.com</a></div>
+              <div><strong>Phone:</strong> <a href="tel:+919042136617" class="text-gray-700">+91 90421 36617</a></div>
+              <div class="mt-3"><a href="#" target="_blank" class="text-blue-600">LinkedIn</a> · <a href="#" target="_blank" class="text-blue-600">GitHub</a></div>
+            </div>
+            <div class="mt-4">
+              <a href="mailto:sanjivid.007@gmail.com" class="btn w-full text-center">Contact Me</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="text-center text-sm text-gray-500 mb-8">
+    <div>© 2023 Sanjivi Kumar — Data Analyst | Junior Data Scientist | BI Developer</div>
+  </footer>
+
+  <script>
+    // mobile menu toggle
+    document.getElementById('mobileOpen').addEventListener('click', () => {
+      const m = document.getElementById('mobileMenu'); m.classList.toggle('hidden');
+    });
+    // smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const t = document.querySelector(a.getAttribute('href'));
+        if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth'}); document.getElementById('mobileMenu')?.classList.add('hidden');}
+      });
+    });
+
+    // init AOS
+    document.addEventListener('DOMContentLoaded', function(){ AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true }); });
+  </script>
+</body>
+</html>
